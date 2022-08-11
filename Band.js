@@ -10,10 +10,12 @@ const {Sequelize, DataTypes} = require('sequelize');
 let Band = db.define('band', {
     name: {
         type: DataTypes.STRING,
+        primaryKey: true
     },
     genre: {
         type: DataTypes.STRING,
-    }
+    },
+
 })
 
 module.exports = {

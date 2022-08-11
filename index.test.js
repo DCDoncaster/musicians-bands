@@ -16,9 +16,7 @@ describe('Band and Musician Models', () => {
         // DONE - test creating a band
         const testBand = await Band.create({
             name: 'Rubber',
-            genre: 'Stationary'}
-            
-            )
+            genre: 'Stationary'})
         expect(testBand.name).toBe('Rubber');
         expect(testBand.genre).toBe('Stationary');
     })
@@ -27,9 +25,30 @@ describe('Band and Musician Models', () => {
         // TODO - test creating a musician
         const testMusician = await Musician.create({
             name: 'John',
-            instrument: 'Loud'
+            instrument: 'Voice'
         })
         expect(testMusician.name).toBe('John');
-        expect(testMusician.instrument).toBe('Loud');
+        expect(testMusician.instrument).toBe('Voice');
     })
+    test('assign musician to a band', async()=>{
+       
+        const testMusician2 = await Musician.create({
+            name:'Peter',
+            instrument: 'Voice'
+        })
+        const testBand2 = await Band.create({
+            name: 'Peters Band',
+            genre: 'Loud'
+        })
+        await testBand2.addMusician(testMusician2);
+
+        const assignTest = await Musician.findOne({where:{
+            memberId: 'Peters Band'
+        }})
+
+        expect(assignTest.memberId).toEqual('Peters Band')
+    })
+
+
+
 })

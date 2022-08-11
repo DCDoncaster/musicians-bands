@@ -8,7 +8,8 @@ let Musician = db.define('musician',{
     },
     instrument: {
         type: DataTypes.STRING
-    }
+    },
+
 })
 
 module.exports = {
