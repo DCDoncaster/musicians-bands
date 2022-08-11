@@ -1,5 +1,6 @@
 const {db} = require('./db');
-const {Band, Musician} = require('./index')
+const {Band, Musician} = require('./index');
+const { Song } = require('./songs');
 
 describe('Band and Musician Models', () => {
     /**
@@ -22,7 +23,7 @@ describe('Band and Musician Models', () => {
     })
 
     test('can create a Musician', async () => {
-        // TODO - test creating a musician
+        // DONE - test creating a musician
         const testMusician = await Musician.create({
             name: 'John',
             instrument: 'Voice'
@@ -30,6 +31,15 @@ describe('Band and Musician Models', () => {
         expect(testMusician.name).toBe('John');
         expect(testMusician.instrument).toBe('Voice');
     })
+    test('can create a song', async()=>{
+        const testSong = await Song.create({
+            name: 'Happy Birthday',
+            Year: 1900
+        })
+        expect(testSong.Year).toBe(1900);
+        expect(testSong.name).toBe('Happy Birthday')
+    })
+
     test('assign musician to a band', async()=>{
        
         const testMusician2 = await Musician.create({
