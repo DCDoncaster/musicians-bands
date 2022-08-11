@@ -71,10 +71,11 @@ describe('Band and Musician Models', () => {
         await fansFavourite.addFan(testFan)
         const devTest = await Band.findAll({include: {
             model: Fan,
-            as: 'Fans',
-            where: {
-                name: 'Second Fan'
-            }
+            // as: 'Fans',
+            required: true, //only pulls in bands that have a relationship with a Fan
+            // where: {
+            //     name: 'Second Fan'
+            // }
         }});
 
         console.log(devTest[0].name)//
